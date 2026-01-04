@@ -134,5 +134,74 @@ def get_my_bookings(user_name: str) -> str:
     else:
         return f"{user_name} has no bookings."
 
+# ============================================
+# Google Calendar Integration Tools
+# ============================================
+
+@mcp.tool()
+def view_calendar(max_events: int = 5) -> str:
+    """Shows upcoming events from your Google Calendar.
+    
+    Args:
+        max_events: Maximum number of events to show (default 5)
+    """
+    try:
+        from calendar_service import list_upcoming_events
+        return list_upcoming_events(max_events)
+    except Exception as e:
+        return f"Error accessing calendar: {e}"
+
+@mcp.tool()
+def add_class_to_calendar(class_name: str, user_name: str) -> str:
+    """Adds a booked gym class to Google Calendar.
+    
+    Args:
+        class_name: Name of the class (e.g., Yoga, Pilates)
+        user_name: Name of the user
+    """
+    # First find the class details
+    data = load_data()
+    target_class = None
+    for c in data:
+        if c['class_name'].lower() == class_name.lower():
+            target_class = c
+            break
+    
+    if not target_class:
+        return f"Class '{class_name}' not found."
+    
+    try:
+        from calendar_service import create_calendar_event
+        result = create_calendar_event(
+            title=f"Gym: {target_class['class_name']} - {user_name}",
+            day=target_class['day'],
+            time=target_class['time'],
+            duration_hours=1,
+            description=f"Gym class booking for {user_name}"
+        )
+        return result
+    except Exception as e:
+        return f"Error adding to calendar: {e}"
+
+@mcp.tool()
+def book_and_add_to_calendar(class_name: str, user_name: str) -> str:
+    """Books a class AND adds it to Google Calendar in one step.
+    
+    Args:
+        class_name: Name of the class to book
+        user_name: Name of the user
+    """
+    # First book the class
+    booking_result = book_class(class_name, user_name)
+    
+    if "Successfully booked" not in booking_result:
+        return booking_result  # Return error if booking failed
+    
+    # Then add to calendar
+    calendar_result = add_class_to_calendar(class_name, user_name)
+    
+    return f"{booking_result}\n{calendar_result}"
+
 if __name__ == "__main__":
     mcp.run()
+
