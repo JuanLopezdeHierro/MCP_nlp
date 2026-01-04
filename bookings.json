@@ -3,7 +3,7 @@
         "class_name": "Yoga",
         "day": "Monday",
         "time": "10:00",
-        "slots": 10,
+        "slots": 15,
         "booked_by": [
             "Juan"
         ]
@@ -12,21 +12,133 @@
         "class_name": "Pilates",
         "day": "Tuesday",
         "time": "11:00",
-        "slots": 8,
+        "slots": 12,
         "booked_by": []
     },
     {
         "class_name": "CrossFit",
         "day": "Wednesday",
         "time": "18:00",
-        "slots": 15,
+        "slots": 20,
         "booked_by": []
     },
     {
         "class_name": "Zumba",
         "day": "Thursday",
         "time": "19:00",
+        "slots": 25,
+        "booked_by": []
+    },
+    {
+        "class_name": "Spinning",
+        "day": "Monday",
+        "time": "07:00",
         "slots": 20,
+        "booked_by": []
+    },
+    {
+        "class_name": "Spinning",
+        "day": "Wednesday",
+        "time": "07:00",
+        "slots": 20,
+        "booked_by": []
+    },
+    {
+        "class_name": "Spinning",
+        "day": "Friday",
+        "time": "07:00",
+        "slots": 20,
+        "booked_by": []
+    },
+    {
+        "class_name": "BodyPump",
+        "day": "Tuesday",
+        "time": "18:00",
+        "slots": 18,
+        "booked_by": []
+    },
+    {
+        "class_name": "BodyPump",
+        "day": "Thursday",
+        "time": "18:00",
+        "slots": 18,
+        "booked_by": []
+    },
+    {
+        "class_name": "HIIT",
+        "day": "Monday",
+        "time": "19:00",
+        "slots": 15,
+        "booked_by": []
+    },
+    {
+        "class_name": "HIIT",
+        "day": "Wednesday",
+        "time": "19:00",
+        "slots": 15,
+        "booked_by": []
+    },
+    {
+        "class_name": "HIIT",
+        "day": "Friday",
+        "time": "19:00",
+        "slots": 15,
+        "booked_by": []
+    },
+    {
+        "class_name": "Boxeo",
+        "day": "Tuesday",
+        "time": "20:00",
+        "slots": 12,
+        "booked_by": []
+    },
+    {
+        "class_name": "Boxeo",
+        "day": "Thursday",
+        "time": "20:00",
+        "slots": 12,
+        "booked_by": []
+    },
+    {
+        "class_name": "Stretching",
+        "day": "Friday",
+        "time": "10:00",
+        "slots": 20,
+        "booked_by": []
+    },
+    {
+        "class_name": "Aquagym",
+        "day": "Saturday",
+        "time": "10:00",
+        "slots": 15,
+        "booked_by": []
+    },
+    {
+        "class_name": "Yoga",
+        "day": "Saturday",
+        "time": "12:00",
+        "slots": 15,
+        "booked_by": []
+    },
+    {
+        "class_name": "Functional Training",
+        "day": "Monday",
+        "time": "17:00",
+        "slots": 10,
+        "booked_by": []
+    },
+    {
+        "class_name": "Functional Training",
+        "day": "Wednesday",
+        "time": "17:00",
+        "slots": 10,
+        "booked_by": []
+    },
+    {
+        "class_name": "Functional Training",
+        "day": "Friday",
+        "time": "17:00",
+        "slots": 10,
         "booked_by": []
     }
 ]

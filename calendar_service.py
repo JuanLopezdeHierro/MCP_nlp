@@ -154,7 +154,48 @@ def create_calendar_event(title, day, time, duration_hours=1, description=""):
         return f"Error: {e}"
 
 
+def delete_event_by_title(title_contains):
+    """
+    Deletes an event that contains the given text in its title.
+    
+    Args:
+        title_contains: Text to search for in event titles
+    
+    Returns:
+        Success or error message
+    """
+    try:
+        service = get_calendar_service()
+        now = datetime.datetime.utcnow().isoformat() + 'Z'
+        
+        events_result = service.events().list(
+            calendarId='primary',
+            timeMin=now,
+            maxResults=50,
+            singleEvents=True,
+            orderBy='startTime'
+        ).execute()
+        
+        events = events_result.get('items', [])
+        
+        for event in events:
+            if title_contains.lower() in event.get('summary', '').lower():
+                service.events().delete(
+                    calendarId='primary',
+                    eventId=event['id']
+                ).execute()
+                return f"Deleted event: {event['summary']}"
+        
+        return f"No event found containing '{title_contains}'"
+        
+    except HttpError as error:
+        return f"Error deleting event: {error}"
+    except Exception as e:
+        return f"Error: {e}"
+
+
 if __name__ == "__main__":
     # Test the calendar service
     print("Testing Google Calendar connection...")
     print(list_upcoming_events(5))
+
